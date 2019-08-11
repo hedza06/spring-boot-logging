@@ -12,9 +12,8 @@ One of the SoC (Security of Compliance) rules is that vendor is not allowed to s
 user/system logs so it's even better to transfer all logs to remote location on system 
 log immediately after log generation.
 
-## Syslog facilities rules
+## Syslog facilities
 ![alt text](https://github.com/hedza06/spring-boot-logging/blob/master/src/main/resources/facilities.png)
-
 
 ## Contribution
 If someone is interesting in contribution please contact me on e-mail ```hedzaprog@gmail.com```. There will be more interesting things to come for Spring Boot especially.
