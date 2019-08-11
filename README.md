@@ -13,7 +13,7 @@ user/system logs so it's even better to transfer all logs to remote location on 
 log immediately after log generation.
 
 ## Syslog facilities rules
-
+![alt text](https://github.com/hedza06/spring-boot-logging/blob/master/src/main/resources/facilities.png)
 
 
 ## Contribution
