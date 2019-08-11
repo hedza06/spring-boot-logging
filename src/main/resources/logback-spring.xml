@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Configuration of console appender - STDOUT -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <!-- Configuration of SYSLOG appender -->
+    <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
+        <syslogHost>localhost</syslogHost>
+        <facility>LOCAL1</facility>
+        <suffixPattern>log-example-REST-service %m thread:%t priority:%p category:%c exception:%exception</suffixPattern>
+    </appender>
+
+    <!-- Configuration of creating logging file -->
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{HH:mm:ss.SSS} [MyApp] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/tmp/my-log-example-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>1024KB</maxFileSize>
+            <maxHistory>7</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Debug logging level -->
+    <logger name="com.springboot.syslog" level="debug" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="SYSLOG" />
+    </logger>
+
+    <!-- Info logging level -->
+    <logger name="com.springboot.syslog" level="info" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="SYSLOG" />
+    </logger>
+
+    <root level="warn">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
